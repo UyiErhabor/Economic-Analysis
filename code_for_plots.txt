@@ -5,19 +5,14 @@
 # =================================================================================
 
 # Import all necessary libraries
-from google.colab import files
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
 from matplotlib.ticker import FuncFormatter
 
-# Note: The `files.upload()` function will prompt you to upload each file interactively.
-# You will need to upload all four files:
-# 'us_inequality.csv', 'france_inequality.csv', 'global_deaths.csv', and 'uk_gdp_2012_2022.csv'
-upload_db = files.upload()
-
-# Load the datasets into pandas DataFrames
+# Load the datasets into pandas DataFrames.
+# The files are already available from your upload, so we can read them directly.
 us_inequality = pd.read_csv('us_inequality.csv')
 france_inequality = pd.read_csv('france_inequality.csv')
 global_deaths = pd.read_csv('global_deaths.csv')
@@ -34,14 +29,14 @@ print(us_inequality.columns)
 print("\nFrance Inequality Columns:")
 print(france_inequality.columns)
 print("\nUS Inequality Head:")
-us_inequality.head()
+print(us_inequality.head())
 print("\nFrance Inequality Head:")
-france_inequality.head()
+print(france_inequality.head())
 
 print("\nGlobal Deaths Columns:")
 print(global_deaths.columns)
 print("\nGlobal Deaths Head:")
-global_deaths.head()
+print(global_deaths.head())
 
 # =================================================================================
 # PLOT 1: ECONOMIC INEQUALITY IN THE US AND FRANCE
@@ -64,7 +59,7 @@ def _plot_series(series, series_name, color='blue'):
     last_index = series['Inequality Index'].iloc[-1]
 
     # Adjust x_offset to move the label slightly past the end of the line
-    x_offset = 1 # You can adjust this value to move the label further to the right
+    x_offset = 1
 
     plt.text(last_year + x_offset, last_index, series_name,
              color=color, ha='left', va='center', fontsize=9)
